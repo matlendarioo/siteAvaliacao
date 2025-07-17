@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Ads - Rise Company</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>') repeat;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-50px, -50px) rotate(360deg); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .facebook-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 80px 0;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #333;
+        }
+
+        .section h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .section p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background: white;
+            padding: 80px 0;
+            margin: 80px 0;
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .benefit-icon {
+            font-size: 2em;
+            color: #667eea;
+            flex-shrink: 0;
+        }
+
+        .benefit-content h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .benefit-content p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .cta-section p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            color: #666;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Form Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2em;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #666;
+            border: 2px solid #e0e0e0;
+        }
+
+        .btn-secondary:hover {
+            background: #e9ecef;
+        }
+
+        .required {
+            color: #dc3545;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #c3e6cb;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section h2 {
+                font-size: 2em;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 20px;
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">RISE COMPANY</div>
+                <div class="nav-links">
+                    <a href="#sobre">Sobre o Serviço</a>
+                    <a href="#beneficios">Benefícios</a>
+                    <a href="#resultados">Resultados</a>
+                    <a href="#contato">Contato</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <span class="facebook-icon">📘</span>
+                <h1>Facebook Ads</h1>
+                <p>Encontre seus clientes ideais nas principais plataformas sociais do mundo e multiplique seus resultados com campanhas de alta performance</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section id="sobre" class="section">
+                <h2>Domine o Facebook e Instagram com Estratégias Vencedoras</h2>
+                <p>O Facebook Ads é uma das ferramentas mais poderosas para alcançar seu público-alvo com precisão cirúrgica. Com mais de 2,8 bilhões de usuários ativos mensalmente, o Facebook e Instagram oferecem um oceano de oportunidades para empresas que sabem como navegar nessas águas.</p>
+                
+                <p>Na Rise Company, desenvolvemos campanhas de Facebook Ads que não apenas geram cliques, mas convertem visitantes em clientes fiéis. Nossa abordagem combina criatividade, dados e estratégia para maximizar seu ROI e acelerar o crescimento do seu negócio.</p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">🎯</span>
+                        <h3>Segmentação Avançada</h3>
+                        <p>Alcance exatamente quem precisa do seu produto ou serviço com segmentação por comportamento, interesses, localização e muito mais.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📊</span>
+                        <h3>Análise de Performance</h3>
+                        <p>Monitoramento em tempo real com relatórios detalhados e insights acionáveis para otimização contínua das campanhas.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🚀</span>
+                        <h3>Otimização Contínua</h3>
+                        <p>Ajustes constantes baseados em dados para garantir o melhor desempenho e reduzir custos por conversão.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="beneficios" class="benefits">
+                <div class="container">
+                    <h2>Por que escolher nosso serviço de Facebook Ads?</h2>
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <span class="benefit-icon">💰</span>
+                            <div class="benefit-content">
+                                <h4>Redução de Custos</h4>
+                                <p>Diminuímos o custo por aquisição de clientes em até 60% através de otimizações avançadas.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">📈</span>
+                            <div class="benefit-content">
+                                <h4>Aumento de Vendas</h4>
+                                <p>Campanhas estruturadas que geram mais leads qualificados e convertem em vendas reais.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🎨</span>
+                            <div class="benefit-content">
+                                <h4>Criativos Impactantes</h4>
+                                <p>Desenvolvemos anúncios visuais e textos persuasivos que capturam a atenção do seu público.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">⚡</span>
+                            <div class="benefit-content">
+                                <h4>Resultados Rápidos</h4>
+                                <p>Veja os primeiros resultados já nas primeiras semanas de campanha ativa.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">🔄</span>
+                            <div class="benefit-content">
+                                <h4>Remarketing Avançado</h4>
+                                <p>Reconquiste visitantes que não converteram na primeira visita com estratégias personalizadas.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">📱</span>
+                            <div class="benefit-content">
+                                <h4>Mobile First</h4>
+                                <p>Campanhas otimizadas para dispositivos móveis, onde está a maioria dos usuários.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="resultados" class="stats">
+                <div class="container">
+                    <h2>Resultados Comprovados</h2>
+                    <p>Nossos clientes de Facebook Ads experimentam crescimento exponencial</p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">400%</div>
+                            <div class="stat-label">Aumento Médio em Conversões</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">60%</div>
+                            <div class="stat-label">Redução no Custo por Lead</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">8.5</div>
+                            <div class="stat-label">ROI Médio das Campanhas</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2M+</div>
+                            <div class="stat-label">Pessoas Alcançadas Mensalmente</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta-section">
+                <div class="container">
+                    <div class="cta-content">
+                        <h2>Pronto para Revolucionar suas Vendas?</h2>
+                        <p>Não perca mais tempo com campanhas amadoras. Deixe que nossos especialistas em Facebook Ads multipliquem seus resultados e transformem sua empresa em uma máquina de vendas.</p>
+                        <a href="#" class="cta-button" onclick="openModal()">Quero Começar Agora</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal do Formulário -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h2>Solicite uma Proposta de Facebook Ads</h2>
+            <p>Preencha o formulário abaixo e receba uma proposta personalizada em até 24 horas</p>
+            
+            <form id="facebookAdsForm">
+                <div class="form-group">
+                    <label for="nome">Nome Completo <span class="required">*</span></label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefone">Telefone <span class="required">*</span></label>
+                    <input type="tel" id="telefone" name="telefone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="empresa">Nome da Empresa <span class="required">*</span></label>
+                    <input type="text" id="empresa" name="empresa" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="orcamento">Orçamento Mensal para Anúncios <span class="required">*</span></label>
+                    <select id="orcamento" name="orcamento" required>
+                        <option value="">Selecione uma faixa</option>
+                        <option value="R$ 1.000 - R$ 5.000">R$ 1.000 - R$ 5.000</option>
+                        <option value="R$ 5.001 - R$ 10.000">R$ 5.001 - R$ 10.000</option>
+                        <option value="R$ 10.001 - R$ 25.000">R$ 10.001 - R$ 25.000</option>
+                        <option value="R$ 25.001 - R$ 50.000">R$ 25.001 - R$ 50.000</option>
+                        <option value="Acima de R$ 50.000">Acima de R$ 50.000</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="objetivo">Principal Objetivo <span class="required">*</span></label>
+                    <select id="objetivo" name="objetivo" required>
+                        <option value="">Selecione um objetivo</option>
+                        <option value="Gerar mais leads">Gerar mais leads</option>
+                        <option value="Aumentar vendas online">Aumentar vendas online</option>
+                        <option value="Aumentar reconhecimento da marca">Aumentar reconhecimento da marca</option>
+                        <option value="Promover evento ou lançamento">Promover evento ou lançamento</option>
+                        <option value="Aumentar tráfego no site">Aumentar tráfego no site</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="observacoes">Observações Adicionais</label>
+                    <textarea id="observacoes" name="observacoes" placeholder="Conte-nos mais sobre seus objetivos, público-alvo ou qualquer informação relevante..."></textarea>
+                </div>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-primary">Solicitar Proposta</button>
+                    <button type="button" class="btn btn-secondary" onclick="limparFormulario()">Limpar</button>
+                </div>
+            </form>
+            
+            <div id="successMessage" class="success-message">
+                <strong>✅ Formulário enviado com sucesso!</strong><br>
+                Entraremos em contato em até 24 horas com uma proposta personalizada para suas campanhas de Facebook Ads.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para abrir o modal
+        function openModal() {
+            document.getElementById('modal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Função para fechar o modal
+        function closeModal() {
+            document.getElementById('modal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fechar modal clicando fora dele
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Função para limpar o formulário
+        function limparFormulario() {
+            document.getElementById('facebookAdsForm').reset();
+            document.getElementById('successMessage').classList.remove('show');
+        }
+
+        // Envio do formulário
+        document.getElementById('facebookAdsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simular envio
+            setTimeout(() => {
+                document.getElementById('successMessage').classList.add('show');
+                
+                // Limpar formulário após 3 segundos
+                setTimeout(() => {
+                    limparFormulario();
+                    closeModal();
+                }, 3000);
+            }, 1000);
+        });
+
+        // Máscara para telefone
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+                if (value.length < 14) {
+                    value = value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+                }
+                e.target.value = value;
+            }
+        });
+
+        // Scroll suave para seções
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
